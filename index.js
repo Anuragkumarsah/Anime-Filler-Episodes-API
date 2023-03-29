@@ -12,10 +12,9 @@ app.get("/", (req, res) => {
   res.send("Please head to /fillers?id=value to get the filler list");
 });
 
-app.post("/filler", async (req, res) => {
-  const { id } = await req.query;
+app.get("/filler", async (req, res) => {
+  const { id } = req.query;
   const url = `https://www.animefillerlist.com/shows/${id}`;
-  //   console.log(id);
   const list = await scrapeList(url);
   res.send(list);
 });
